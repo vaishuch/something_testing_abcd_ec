@@ -1,0 +1,1662 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (108.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (150.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20170811122726)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170811122726"]]
+  [1m[35m (111.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-11 12:32:05.423951"], ["updated_at", "2017-08-11 12:32:05.423951"]]
+  [1m[35m (96.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+Started GET "/" for 127.0.0.1 at 2017-08-11 18:06:35 +0530
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant HomeController):
+  
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.3) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.3) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-08-11 18:11:24 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 1370ms (Views: 1354.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-11 18:11:29 +0530
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"aDbO8GiVnMsFkO4eqJAFn3bW7bRCleX3Ni780zki5cjUK00ifoQO+YVECIX9mLyXIWYrRJ3wtU4OxsJz3mU0sg=="}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 70ms (Views: 41.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at 2017-08-11 18:11:32 +0530
+Processing by Devise::PasswordsController#new as HTML
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/passwords/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 26ms (Views: 23.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-11 18:11:36 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 26ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-11 18:16:49 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Parameters: {"authenticity_token"=>"aDbO8GiVnMsFkO4eqJAFn3bW7bRCleX3Ni780zki5cjUK00ifoQO+YVECIX9mLyXIWYrRJ3wtU4OxsJz3mU0sg=="}
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 29ms (Views: 27.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-11 18:17:16 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 24ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRoles (20170811124854)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "rolename" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_ab35d699f0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_roles_on_user_id" ON "roles" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170811124854"]]
+  [1m[35m (109.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateStates (20170811125013)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "states" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "statename" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170811125013"]]
+  [1m[35m (110.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCities (20170811125046)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCities (20170811125046)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "cities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cityname" varchar, "state_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_cities_on_state_id" ON "cities" ("state_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170811125046"]]
+  [1m[35m (105.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateZipcodes (20170811125229)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "zipcodes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "zipno" integer, "city_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_zipcodes_on_city_id" ON "zipcodes" ("city_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170811125229"]]
+  [1m[35m (116.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAddresses (20170811130010)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAddresses (20170811130010)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "line1" varchar, "line2" varchar, "city_id" integer, "zipcode_id" integer, "state_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_ab048f757c"
+FOREIGN KEY ("city_id")
+  REFERENCES "cities" ("id")
+, CONSTRAINT "fk_rails_2d87b6c11e"
+FOREIGN KEY ("state_id")
+  REFERENCES "states" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_addresses_on_city_id" ON "addresses" ("city_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_addresses_on_zipcode_id" ON "addresses" ("zipcode_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_addresses_on_state_id" ON "addresses" ("state_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170811130010"]]
+  [1m[35m (136.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "states" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2017-08-11 13:04:43.500270"], ["updated_at", "2017-08-11 13:04:43.500270"]]
+  [1m[35m (82.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mState Load (0.4ms)[0m  [1m[34mSELECT  "states".* FROM "states" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35mSQL (95.5ms)[0m  [1m[33mUPDATE "states" SET "statename" = 'MP' WHERE "states"."id" = ?[0m  [["id", 1]]
+  [1m[36mState Load (0.3ms)[0m  [1m[34mSELECT  "states".* FROM "states" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "cities" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2017-08-11 13:10:20.371163"], ["updated_at", "2017-08-11 13:10:20.371163"]]
+  [1m[35m (91.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35mSQL (83.1ms)[0m  [1m[33mUPDATE "cities" SET "cityname" = 'Indore', "state_id" = 1 WHERE "cities"."id" = ?[0m  [["id", 1]]
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserInformations (20170811131754)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "user_informations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "name" varchar, "address_id" integer, "phone" integer, "mobileno" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_067f0256f8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_57107ee45c"
+FOREIGN KEY ("address_id")
+  REFERENCES "addresses" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_user_informations_on_user_id" ON "user_informations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_user_informations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_user_informations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_user_informations_on_address_id" ON "user_informations" ("address_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170811131754"]]
+  [1m[35m (118.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_user_informations_on_address_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_user_informations_on_address_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_user_informations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_user_informations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+[0m
+Started GET "/" for 127.0.0.1 at 2017-08-11 18:51:21 +0530
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 247ms (Views: 236.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-11 18:51:24 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Parameters: {"authenticity_token"=>"OBuyEtqk38L5mYeaaXhc8i8dKc12I0Ttcp0Waq1qXh+EBjHAzLVN8HlNYQE8cOX6eK3vPalGFFRKdSjKSi2PZQ=="}
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 56ms (Views: 38.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-11 18:56:56 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 23ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 13:52:54 +0530
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 242ms (Views: 230.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 13:52:58 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Parameters: {"authenticity_token"=>"K2CjdYYH0x7UxdYAKKRKBP3kEDoTVT94d2aJuFbyD8iczmmtD7uUI31QIRoycTGSUN7MbGVqc5WRdzcnuoLUOA=="}
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 53ms (Views: 35.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-12 13:53:00 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 28ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 14:09:55 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 76ms (Views: 74.7ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-08-12 14:09:57 +0530
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"YJuqcgle/DRsG97FmRnCLDPS0TiPwkCi3gAdiyVI79jXNWCqgOK7CcWOKd+DzLm6nugNbvn9DE84EaMUyTg0KA=="}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 42ms (Views: 23.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 14:10:01 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"YJuqcgle/DRsG97FmRnCLDPS0TiPwkCi3gAdiyVI79jXNWCqgOK7CcWOKd+DzLm6nugNbvn9DE84EaMUyTg0KA=="}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant RegistrationController::Userinformation):
+  
+app/controllers/registration_controller.rb:8:in `new'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserinformations (20170812084049)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "userinformations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "name" varchar, "address_id" integer, "phone" integer, "mobileno" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_26d6ff644d"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_26011c1850"
+FOREIGN KEY ("address_id")
+  REFERENCES "addresses" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_userinformations_on_user_id" ON "userinformations" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_userinformations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_userinformations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_userinformations_on_address_id" ON "userinformations" ("address_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170812084049"]]
+  [1m[35m (97.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_user_informations_on_address_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_user_informations_on_address_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_user_informations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_user_informations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_userinformations_on_address_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_userinformations_on_address_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_userinformations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_userinformations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 14:11:01 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"YJuqcgle/DRsG97FmRnCLDPS0TiPwkCi3gAdiyVI79jXNWCqgOK7CcWOKd+DzLm6nugNbvn9DE84EaMUyTg0KA=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered registration/new.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 2.5ms)
+
+
+  
+SyntaxError (/home/asingh/ecommerce2/app/views/registration/new.html.erb:5: syntax error, unexpected tIDENTIFIER, expecting ')'
+orm_for(:url registration_path(resource_name)) do |f| @outpu
+                              ^
+/home/asingh/ecommerce2/app/views/registration/new.html.erb:5: syntax error, unexpected ')', expecting keyword_end
+istration_path(resource_name)) do |f| @output_buffer.safe_ap
+                              ^
+/home/asingh/ecommerce2/app/views/registration/new.html.erb:61: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/registration/new.html.erb:5: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/registration/new.html.erb:5: syntax error, unexpected ')', expecting keyword_end
+app/views/registration/new.html.erb:61: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 14:11:55 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"YJuqcgle/DRsG97FmRnCLDPS0TiPwkCi3gAdiyVI79jXNWCqgOK7CcWOKd+DzLm6nugNbvn9DE84EaMUyTg0KA=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered registration/new.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/asingh/ecommerce2/app/views/registration/new.html.erb:58: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/registration/new.html.erb:58: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 14:12:05 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"YJuqcgle/DRsG97FmRnCLDPS0TiPwkCi3gAdiyVI79jXNWCqgOK7CcWOKd+DzLm6nugNbvn9DE84EaMUyTg0KA=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered registration/new.html.erb within layouts/application (283.0ms)
+Completed 500 Internal Server Error in 289ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x007fa4000acbd8>:0x007fa408f87df8>):
+     7: 
+     8: <tr>
+     9: <td>Name : </td>
+    10: <td><%= f.text_field :name, autofocus: true %></td>
+    11: </tr>
+    12: 
+    13: 
+  
+app/views/registration/new.html.erb:10:in `_app_views_registration_new_html_erb__431891242630413856_70171250954020'
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 14:17:47 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"YJuqcgle/DRsG97FmRnCLDPS0TiPwkCi3gAdiyVI79jXNWCqgOK7CcWOKd+DzLm6nugNbvn9DE84EaMUyTg0KA=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered registration/new.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/asingh/ecommerce2/app/views/registration/new.html.erb:5: syntax error, unexpected tIDENTIFIER, expecting ')'
+orm_for(:url registration_path(resource_name)) do |f| @outpu
+                              ^
+/home/asingh/ecommerce2/app/views/registration/new.html.erb:5: syntax error, unexpected ')', expecting keyword_end
+istration_path(resource_name)) do |f| @output_buffer.safe_ap
+                              ^
+/home/asingh/ecommerce2/app/views/registration/new.html.erb:61: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/registration/new.html.erb:5: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/registration/new.html.erb:5: syntax error, unexpected ')', expecting keyword_end
+app/views/registration/new.html.erb:61: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 14:18:28 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"YJuqcgle/DRsG97FmRnCLDPS0TiPwkCi3gAdiyVI79jXNWCqgOK7CcWOKd+DzLm6nugNbvn9DE84EaMUyTg0KA=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered registration/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 31ms (Views: 29.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 14:21:36 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eZQVDSTf53gpokeuPtiYEMiEu+X/NxLwxU0fgl/TCX7OOt/VrWOgRYA3sLQkDeOGZb5ns4kIXh0jXKEds6PSjg==", "userinfo"=>{"name"=>"as", "mobileno"=>"1234567890"}, "user"=>{"email"=>"as@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"ss", "line2"=>"hh"}, "commit"=>"Submit"}
+Completed 500 Internal Server Error in 249ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `line1=' for nil:NilClass):
+  
+app/controllers/registration_controller.rb:24:in `create'
+Started POST "/users" for 127.0.0.1 at 2017-08-12 14:22:25 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eZQVDSTf53gpokeuPtiYEMiEu+X/NxLwxU0fgl/TCX7OOt/VrWOgRYA3sLQkDeOGZb5ns4kIXh0jXKEds6PSjg==", "userinfo"=>{"name"=>"as", "mobileno"=>"1234567890"}, "user"=>{"email"=>"as@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"ss", "line2"=>"hh"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "as@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "as@gmail.com"], ["encrypted_password", "$2a$11$/or8Mt9mnGO.JnZ/Hxbb7etcnkd1ZNQ0TlYkCwizHYUJD2WJOZ61S"], ["created_at", "2017-08-12 08:52:26.000867"], ["updated_at", "2017-08-12 08:52:26.000867"]]
+  [1m[35m (86.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 508ms (ActiveRecord: 91.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 14:22:26 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 14:22:29 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"rT6WLwmaCuuCGTgVkHdsXOLytPyF/kIyDTPNydAnW90akFz3gCZN1iuMzw+KohfKT8hoqvPBDt/rInNWPFeALQ=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered registration/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 28ms (Views: 25.3ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUserinformation Load (0.2ms)[0m  [1m[34mSELECT  "userinformations".* FROM "userinformations" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2017-08-12 16:14:26 +0530
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 355ms (Views: 344.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 16:14:30 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"9VLool54B8eXbHiR3///yqgUDzOEwxGBaSpGefsILmVC/CJ618RA+j75j4vFKoRcBS7TZfL8XWyPO/jmF3j1lQ=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.7ms)
+  Rendered registration/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 85ms (Views: 26.5ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 16:15:52 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HbCQnvXuQilfapF/5vaIh17mWip58xyRwtkkzhT8gA6qHlpGfFIFFPb/ZmX8I/MR89yGfA/MUHwkyJpR+Ixb/g==", "userinfo"=>{"name"=>"vc", "mobileno"=>"1234567890"}, "user"=>{"email"=>"vc@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"ss", "line2"=>"hh"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "vc@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "vc@gmail.com"], ["encrypted_password", "$2a$11$7ertiVTyrik.Dh1eGdkDeeeRmicx.tknkXHhRu4Ot3lBWMN8l7R1m"], ["created_at", "2017-08-12 10:45:53.085209"], ["updated_at", "2017-08-12 10:45:53.085209"]]
+  [1m[35m (77.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 421ms (ActiveRecord: 78.9ms)
+
+
+  
+NoMethodError (undefined method `user=' for #<Address:0x007f5a1001f588>):
+  
+app/controllers/registration_controller.rb:37:in `create'
+Started POST "/users" for 127.0.0.1 at 2017-08-12 16:18:26 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HbCQnvXuQilfapF/5vaIh17mWip58xyRwtkkzhT8gA6qHlpGfFIFFPb/ZmX8I/MR89yGfA/MUHwkyJpR+Ixb/g==", "userinfo"=>{"name"=>"vc", "mobileno"=>"1234567890"}, "user"=>{"email"=>"vc@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"ss", "line2"=>"hh"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "vc@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 314ms (ActiveRecord: 3.2ms)
+
+
+  
+NoMethodError (undefined method `user=' for #<Address:0x007f5a040987c8>):
+  
+app/controllers/registration_controller.rb:37:in `create'
+Started POST "/users" for 127.0.0.1 at 2017-08-12 16:19:35 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HbCQnvXuQilfapF/5vaIh17mWip58xyRwtkkzhT8gA6qHlpGfFIFFPb/ZmX8I/MR89yGfA/MUHwkyJpR+Ixb/g==", "userinfo"=>{"name"=>"vc", "mobileno"=>"1234567890"}, "user"=>{"email"=>"vc@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"ss", "line2"=>"hh"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "vc@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "vc@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "userinformations" ("name", "mobileno", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "vc"], ["mobileno", 1234567890], ["created_at", "2017-08-12 10:49:35.509631"], ["updated_at", "2017-08-12 10:49:35.509631"]]
+  [1m[35m (88.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 400ms (ActiveRecord: 92.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 16:19:35 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 27ms (Views: 25.4ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUserinformation Load (0.3ms)[0m  [1m[34mSELECT  "userinformations".* FROM "userinformations" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:06:52 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"kwVNjS25hFetDMfPy5PAyJk6RRV4/xO0OdGo1kY4fckkq4dVpAXDagSZMNXRRrteNACZQw7AX1nfwBZJqkimOQ=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered registration/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 79ms (Views: 21.3ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:07:13 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vcEodeHW2szD5KIdIsO+XALcZ58ISmo6FKA9PNq6qioKb+KtaGqd8WpxVQc4FsXKr+a7yX51JtfysYOjNspx2g==", "userinfo"=>{"name"=>"maya", "mobileno"=>"1234567890"}, "user"=>{"email"=>"maya25@g.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"kkk", "line2"=>"mmm"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "maya25@g.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "maya25@g.com"], ["encrypted_password", "$2a$11$PsDnU3BmUcBboPu9MvyNDujVbBlOMCum07SUz5a4OwRNI12DB4QsC"], ["created_at", "2017-08-12 11:37:13.585733"], ["updated_at", "2017-08-12 11:37:13.585733"]]
+  [1m[35m (69.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "userinformations" ("user_id", "name", "mobileno", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 3], ["name", "maya"], ["mobileno", 1234567890], ["created_at", "2017-08-12 11:37:13.671062"], ["updated_at", "2017-08-12 11:37:13.671062"]]
+  [1m[35m (106.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 438ms (ActiveRecord: 177.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:07:13 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 23ms (Views: 21.6ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUserinformation Load (0.3ms)[0m  [1m[34mSELECT  "userinformations".* FROM "userinformations" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:10:28 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"+1mTZf14GW0FUTUM1XvaD6JiNk5LD1MXgmjETH1CicFM91m9dMReUKzEwhbPrqGZD1jqGD0wH/pkeXrTkTJSMQ=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered registration/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 73ms (Views: 23.2ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:11:20 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y3I9UKFEnF+9HqA2cewKPtlrbHwaSL+xLDRyWzjLFJN83PeIKPjbYhSLVyxrOXGodFGwKmx381zKJczE1LvPYw==", "userinfo"=>{"name"=>"richa", "mobileno"=>"1234567890"}, "user"=>{"email"=>"r@yahoo.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"kkk", "line2"=>"mmm"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "r@yahoo.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "r@yahoo.com"], ["encrypted_password", "$2a$11$T.Y9aVcF2EPpCzyhwK0Op.7mrA98kxJ7nJew0CrMteCTTCVdabeLu"], ["created_at", "2017-08-12 11:41:20.691129"], ["updated_at", "2017-08-12 11:41:20.691129"]]
+  [1m[35m (75.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mState Load (0.1ms)[0m  [1m[34mSELECT  "states".* FROM "states" WHERE "states"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "userinformations" ("user_id", "name", "mobileno", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 4], ["name", "richa"], ["mobileno", 1234567890], ["created_at", "2017-08-12 11:41:20.831702"], ["updated_at", "2017-08-12 11:41:20.831702"]]
+  [1m[35m (90.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 476ms (ActiveRecord: 170.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:11:20 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 22ms (Views: 20.8ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUserinformation Load (0.2ms)[0m  [1m[34mSELECT  "userinformations".* FROM "userinformations" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:13:47 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"MXppP8bqVAf5PCeQXk2vSE2eXnfkdKWN2j4boXR7SmqG1KPnT1YTOlCp0IpEmNTe4KSCIZJL6WA8L6U+mAuRmg=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered registration/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 80ms (Views: 21.9ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:16:57 +0530
+Processing by RegistrationController#new as HTML
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered registration/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 68ms (Views: 23.8ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:17:17 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2JzlUHUnYQXFeDZ1wmj/88SGVxCFybgaz7m5CSKbO1tvMi+I/JsmOGztwW/YvYRlabyLRvP29PcpqAeWzuvgqw==", "userinfo"=>{"name"=>"asas", "mobileno"=>"1234567890"}, "user"=>{"email"=>"as@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"kkk", "line2"=>"mmm"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mState Load (0.1ms)[0m  [1m[34mSELECT  "states".* FROM "states" WHERE "states"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 263ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:17:17 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 21ms (Views: 19.9ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUserinformation Load (0.3ms)[0m  [1m[34mSELECT  "userinformations".* FROM "userinformations" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mAddress Load (0.3ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:20:57 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 20ms (Views: 19.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:20:59 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"WTJmXA6B9cDGVA7DDVkFIeocN8w1A+LHWDrQJdlzqQjunKyEhz2y/W/B+dkXjH63RybrmkM8riq+K266NQNy+A=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered registration/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 78ms (Views: 22.4ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:21:33 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G2vzMk6oQ094VX0n/qVJ7KpmKfFWsxuhvqn4efuMM7SsxTnqxxQEctHAij3kcDJ6B1z1pyCMV0xYuEbmF/zoRA==", "userinfo"=>{"name"=>"jjj", "mobileno"=>"1234567890"}, "user"=>{"email"=>"jjj@g.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"mo", "line2"=>"mo", "city"=>"12", "state"=>"12", "zipcode"=>"12"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mState Load (0.1ms)[0m  [1m[34mSELECT  "states".* FROM "states" WHERE "states"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 263ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:21:34 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 19ms (Views: 17.6ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:24:34 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"WASThF+aQ3jK0dSoafjsPIUxpa0GNk+4O1ogJqGWfr3vqllc1iYERWNEI7JzLZeqKAt5+3AJA1XdS565TealTQ=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered registration/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 73ms (Views: 25.6ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:24:52 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SSBdkGSKJUVKY2CIBcjPqZ5ML9Ux10ba7/dvhA8OoPj+jpdI7TZieOP2l5IfHbQ/M3bzg0foCjcJ5tEb4357CA==", "userinfo"=>{"name"=>"a", "mobileno"=>"01234567890"}, "user"=>{"email"=>"as@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"no", "line2"=>"no", "city"=>"1", "state"=>"1", "zipcode"=>"1"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mState Load (0.1ms)[0m  [1m[34mSELECT  "states".* FROM "states" WHERE "states"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 263ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:24:52 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 20ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:27:08 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 36ms (Views: 34.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:27:10 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"Sn5YB/Ba4zjfGhFNlK33jTdbOYrf8rAN9qQ3b3Itb+f90JLfeeakBXaP5leOeIwbmmHl3KnN/OAQtYnwnl20Fw=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.1ms)
+  Rendered registration/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:27:21 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"klgOmec1reEroRM9jq4qvYebJWw7o2vSEVABPC7MfcMl9sRBbonq3II05CeUe1ErKqH5Ok2cJz/3Qb+jwrymMw==", "userinfo"=>{"name"=>"as", "mobileno"=>"01234567890"}, "user"=>{"email"=>"as@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"no", "line2"=>"no", "city"=>"1", "state"=>"1", "zipcode"=>"1"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mState Load (0.1ms)[0m  [1m[34mSELECT  "states".* FROM "states" WHERE "states"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 248ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:27:21 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:28:11 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"wwqWYXza3OUD6pGu8VSdWbVMq2m8czxiYaLx77z2mrp0pFy59Wab2Kp/ZrTrgebPGHZ3P8pMcI+Hs09wUIZBSg=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered registration/new.html.erb within layouts/application (11.8ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `zipcode' for #<Address:0x007f5a10487d00>
+Did you mean?  zipcode_id):
+    32: <td><%=text_field_tag "address[line2]" ,@address.line2 %></td>
+    33: <td><%=text_field_tag "address[city]" ,@address.city %></td>
+    34: <td><%=text_field_tag "address[state_id]" ,@address.state_id %></td>
+    35: <td><%=text_field_tag "address[zipcode]" ,@address.zipcode %></td>
+    36: 
+    37: <td><%#=text_field_tag "address[zipno]" ,@address.zipno %></td>
+    38: </tr>
+  
+app/views/registration/new.html.erb:35:in `_app_views_registration_new_html_erb___666289096507980117_70012398482240'
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:28:41 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"wwqWYXza3OUD6pGu8VSdWbVMq2m8czxiYaLx77z2mrp0pFy59Wab2Kp/ZrTrgebPGHZ3P8pMcI+Hs09wUIZBSg=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered registration/new.html.erb within layouts/application (20.5ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `zipcode' for #<Address:0x00561b95d11d00>
+Did you mean?  zipcode_id):
+    32: <td><%=text_field_tag "address[line2]" ,@address.line2 %></td>
+    33: <td><%=text_field_tag "address[city]" ,@address.city %></td>
+    34: <td><%=text_field_tag "address[state]" ,@address.state %></td>
+    35: <td><%=text_field_tag "address[zipcode]" ,@address.zipcode %></td>
+    36: 
+    37: <td><%#=text_field_tag "address[zipno]" ,@address.zipno %></td>
+    38: </tr>
+  
+app/views/registration/new.html.erb:35:in `_app_views_registration_new_html_erb___666289096507980117_47338238747660'
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:29:19 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"wwqWYXza3OUD6pGu8VSdWbVMq2m8czxiYaLx77z2mrp0pFy59Wab2Kp/ZrTrgebPGHZ3P8pMcI+Hs09wUIZBSg=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered registration/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 28ms (Views: 26.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:29:38 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+2wRxt72yI+ejZm0SLjsRFtMaGUNRhyTskUvRuVOXv5MwtseV0qPsjcYbq5SbZfS9na0M3t5UH5UVJHZCT6FDg==", "userinfo"=>{"name"=>"as", "mobileno"=>"01234567890"}, "user"=>{"email"=>"as@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"non", "line2"=>"non", "city"=>"111", "state"=>"111", "zipcode_id"=>"11112"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mState Load (0.1ms)[0m  [1m[34mSELECT  "states".* FROM "states" WHERE "states"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 249ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:29:39 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 19ms (Views: 18.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:31:27 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 22ms (Views: 20.7ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:31:29 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"LsxJT6lOQFWIOBvDYeX89aXTHlit06v6jwdQ/D2klU2ZYoOXIPIHaCGt7Nl7MIdjCOnCDtvs5xdpFu5j0dROvQ=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered registration/new.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 80ms (Views: 29.3ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:31:43 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lC2J+xOuZZuFU96gh5XHAbf4plwDBgOmshsNlo13iOQjg0MjmhIipizGKbqdQLyXGsJ6CnU5T0tUCrMJYQdTFA==", "userinfo"=>{"name"=>"as", "mobileno"=>"01234567890"}, "user"=>{"email"=>"as@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"no", "line2"=>"no", "city"=>"52", "state"=>"55", "zipcode_id"=>"454"}, "commit"=>"Submit"}
+Completed 500 Internal Server Error in 243ms (ActiveRecord: 0.0ms)
+
+
+  
+TypeError (no implicit conversion of Symbol into Integer):
+  
+app/controllers/registration_controller.rb:31:in `[]'
+app/controllers/registration_controller.rb:31:in `create'
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:35:50 +0530
+  
+SyntaxError (/home/asingh/ecommerce2/app/controllers/registration_controller.rb:31: syntax error, unexpected ']', expecting keyword_end
+= params[:address][:state_id]]
+                              ^):
+  
+app/controllers/registration_controller.rb:31: syntax error, unexpected ']', expecting keyword_end
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:36:10 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lC2J+xOuZZuFU96gh5XHAbf4plwDBgOmshsNlo13iOQjg0MjmhIipizGKbqdQLyXGsJ6CnU5T0tUCrMJYQdTFA==", "userinfo"=>{"name"=>"as", "mobileno"=>"01234567890"}, "user"=>{"email"=>"as@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"no", "line2"=>"no", "city"=>"52", "state"=>"55", "zipcode_id"=>"454"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 300ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:36:10 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 23ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:38:04 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"ZHfFyKItDplSGGTYDl7EhoAHQwk0oos6A1LHm7LwyN/T2Q8QK5FJpPuNk8IUi78QLT2fX0Kdx9flQ3kEXoATLw=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.4ms)
+  Rendered registration/new.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 83ms (Views: 34.4ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:38:19 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qQes354//umVmsw1/9DthmajZfNI2ap14yHqNwPHSvseqWYHF4O51DwPOy/lBZYQy5m5pT7m5pgFMFSo77eRCw==", "userinfo"=>{"name"=>"as", "mobileno"=>"01234567890"}, "user"=>{"email"=>"as@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"no", "line2"=>"no", "city"=>"85", "state"=>"87", "zipcode_id"=>"789"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 252ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:38:19 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 35ms (Views: 34.2ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:40:13 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:40:15 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"D4ypbIy3NqYGj/XKeQSKA+RYSSyH0R19EC+aQqDERC64ImO0BQtxm68aAtBj0fGVSWKVevHuUZD2PiTdTLSf3g=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered registration/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 28ms (Views: 25.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:40:27 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qke/+JppH2jWhc57lrK5nP27MriiBcovapk7hFC0o7v16XUgE9VYVX8QOWGMZ8IKUIHu7tQ6hsKMiIUbvMR4Sw==", "userinfo"=>{"name"=>"a", "mobileno"=>"01234567890"}, "user"=>{"email"=>"as@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"no", "line2"=>"no", "city_id"=>"456", "state_id"=>"789", "zipcode_id"=>"123"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 456], ["LIMIT", 1]]
+  [1m[36mState Load (0.1ms)[0m  [1m[34mSELECT  "states".* FROM "states" WHERE "states"."id" = ? LIMIT ?[0m  [["id", 789], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 252ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:40:28 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mAddress Load (0.2ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:42:40 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"xgZC7XnKDycxr1yPZYCvSYz6xhBFCajzFOk79VAPPWpxqIg18HZIGpg6q5V/VdTfIcAaRjM25B7y+IVqvH/mmg=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered registration/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 76ms (Views: 26.9ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-12 17:42:51 +0530
+Processing by RegistrationController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8w/IH+g86G1hxQ1WrtIHzeahQg1N+VTzQvba9qpzl0VEoQLHYYCvUMhQ+ky0B3xbS5ueWzvGGB6k52RpRgNMtQ==", "userinfo"=>{"name"=>"as", "mobileno"=>"01234567890"}, "user"=>{"email"=>"as@gmail.com", "password"=>"[FILTERED]"}, "address"=>{"line1"=>"no", "line2"=>"no", "city_id"=>"78", "state_id"=>"85", "zipcode_id"=>"96"}, "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 78], ["LIMIT", 1]]
+  [1m[36mState Load (0.2ms)[0m  [1m[34mSELECT  "states".* FROM "states" WHERE "states"."id" = ? LIMIT ?[0m  [["id", 85], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 270ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-12 17:42:51 +0530
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 30ms (Views: 28.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:45:30 +0530
+Processing by RegistrationController#new as HTML
+  Parameters: {"authenticity_token"=>"LrB0PZvfwVIYgq88Gs/Mfh+s+5hFZC20Cskhf166UnyZHr7lEmOGb7EXWCYAGrfospYnzjNbYVns2J/gssqJjA=="}
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.9ms)
+  Rendered registration/new.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 26ms (Views: 23.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:46:26 +0530
+Processing by RegistrationController#new as HTML
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered registration/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 27ms (Views: 25.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:46:44 +0530
+Processing by RegistrationController#new as HTML
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered registration/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 28ms (Views: 25.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:46:55 +0530
+Processing by RegistrationController#new as HTML
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered registration/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 26ms (Views: 24.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-08-12 17:47:55 +0530
+Processing by RegistrationController#new as HTML
+  Rendering registration/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered registration/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 28ms (Views: 25.1ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserInformations (20170811131754)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "user_informations"[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20170811131754"]]
+  [1m[35m (156.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_userinformations_on_address_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_userinformations_on_address_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_userinformations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_userinformations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_zipcode_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_addresses_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_cities_on_state_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_roles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_userinformations_on_address_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_userinformations_on_address_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_userinformations_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_userinformations_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_zipcodes_on_city_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (345.1ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (261.3ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK(7442243164971502755, 0)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DeviseCreateUsers (20170811122726)
+  [1m[35m (350.6ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (254.1ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  [1m[35m (210.3ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_reset_password_token`  ON `users` (`reset_password_token`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170811122726')[0m
+  [1m[35m (18.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRoles (20170811124854)
+  [1m[35m (234.0ms)[0m  [1m[35mCREATE TABLE `roles` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `rolename` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170811124854')[0m
+  [1m[35m (75.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAddresses (20170811130010)
+  [1m[35m (390.2ms)[0m  [1m[35mCREATE TABLE `addresses` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `line1` varchar(255), `line2` varchar(255), `city` varchar(255), `zipcode` varchar(255), `userinformation_id` bigint, `state_id` bigint, `country_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_addresses_on_userinformation_id`  (`userinformation_id`),  INDEX `index_addresses_on_state_id`  (`state_id`),  INDEX `index_addresses_on_country_id`  (`country_id`), CONSTRAINT `fk_rails_db06484747`
+FOREIGN KEY (`userinformation_id`)
+  REFERENCES `userinformations` (`id`)
+, CONSTRAINT `fk_rails_2d87b6c11e`
+FOREIGN KEY (`state_id`)
+  REFERENCES `states` (`id`)
+, CONSTRAINT `fk_rails_d873e14e27`
+FOREIGN KEY (`country_id`)
+  REFERENCES `countries` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK(7442243164971502755)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK(7442243164971502755, 0)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateUserinformations (20170812084049)
+  [1m[35m (288.7ms)[0m  [1m[35mCREATE TABLE `userinformations` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` bigint, `fname` varchar(255), `lname` varchar(255), `gender` varchar(255), `phone` int, `mobileno` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_userinformations_on_user_id`  (`user_id`), CONSTRAINT `fk_rails_26d6ff644d`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170812084049')[0m
+  [1m[35m (29.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCountries (20170812124452)
+  [1m[35m (345.1ms)[0m  [1m[35mCREATE TABLE `countries` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `code` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170812124452')[0m
+  [1m[35m (64.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStates (20170812135538)
+  [1m[35m (301.8ms)[0m  [1m[35mCREATE TABLE `states` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `country_id` bigint,  INDEX `index_states_on_country_id`  (`country_id`), CONSTRAINT `fk_rails_40bd891262`
+FOREIGN KEY (`country_id`)
+  REFERENCES `countries` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170812135538')[0m
+  [1m[35m (29.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAddresses (20170812140611)
+  [1m[35m (362.9ms)[0m  [1m[35mCREATE TABLE `addresses` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `line1` varchar(255), `line2` varchar(255), `city` varchar(255), `zipcode` varchar(255), `userinformation_id` bigint, `state_id` bigint, `country_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_addresses_on_userinformation_id`  (`userinformation_id`),  INDEX `index_addresses_on_state_id`  (`state_id`),  INDEX `index_addresses_on_country_id`  (`country_id`), CONSTRAINT `fk_rails_db06484747`
+FOREIGN KEY (`userinformation_id`)
+  REFERENCES `userinformations` (`id`)
+, CONSTRAINT `fk_rails_2d87b6c11e`
+FOREIGN KEY (`state_id`)
+  REFERENCES `states` (`id`)
+, CONSTRAINT `fk_rails_d873e14e27`
+FOREIGN KEY (`country_id`)
+  REFERENCES `countries` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170812140611')[0m
+  [1m[35m (30.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2017-08-12 14:06:50', '2017-08-12 14:06:50')[0m
+  [1m[35m (33.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK(7442243164971502755)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m

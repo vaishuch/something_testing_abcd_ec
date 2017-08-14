@@ -1,0 +1,49 @@
+
+<h2>Sign up # REG</h2>
+
+<%= form_tag(user_registration_path,:method => 'post') %>
+<%= devise_error_messages! %>
+<table>
+
+<tr>
+<td>Username : </td>
+<td><%=text_field_tag "userinfo[name]",@userinfo.name %></td>
+</tr>
+
+<tr>
+<td>Email : </td>
+<td><%=email_field_tag "user[email]",@user.email %></td>
+</tr>
+
+<tr>
+<td>Password : </td>
+<td><%=password_field_tag "user[password]",@user.password %></td>
+</tr>
+
+
+<tr>
+<td>Mobile : </td>
+<td><%=text_field_tag "userinfo[mobileno]" ,@userinfo.mobileno %></td>
+</tr>
+
+<tr>
+<td>Address : </td>
+<td><%=text_field_tag "address[line1]" ,@address.line1 %></td>
+<td><%=text_field_tag "address[line2]" ,@address.line2 %></td>
+<td>city: <%=text_field_tag "address[city_id]" , @address.city_id %></td>
+<td>state: <%=text_field_tag "address[state_id]" , @address.state_id %></td>
+<td> pincode: <%=text_field_tag "address[zipcode_id]" , @address.zipcode_id %></td>
+
+<td><%#=text_field_tag "address[zipno]" ,@address.zipno %></td>
+</tr>
+
+<tr>
+<td><%= submit_tag nil, :class => "form_submit"%></td>
+</tr>
+</table>
+<br />
+<%= render :partial => "devise/shared/links" %>
+
+<p>
+<%= link_to "Home Page", root_path %> <p>
+</p>
