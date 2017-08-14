@@ -8,12 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: db_ecommerce
+  database: ecommerce
 
 test:
   <<: *default
-  database: db_ecommerce
+  database: ecommerce
 
 production:
   <<: *default
-database: db_ecommerce
+database: ecommerce
