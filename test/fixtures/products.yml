@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  keywords: MyString
+  catagory_types: one
+  available_at: 2017-08-12 13:11:42
+  deleted_at: 2017-08-12 13:11:42
+  price: 9.99
+
+two:
+  name: MyString
+  description: MyString
+  keywords: MyString
+  catagory_types: two
+  available_at: 2017-08-12 13:11:42
+  deleted_at: 2017-08-12 13:11:42
+  price: 9.99
