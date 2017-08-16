@@ -8,5 +8,6 @@ class User < ApplicationRecord
 	has_one :userinformation
 	has_many :roles
 
+accepts_nested_attributes_for :userinformation, :allow_destroy => true
 
 end

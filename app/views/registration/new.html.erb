@@ -8,12 +8,12 @@
 <%= f.fields_for :userinformation do |uf| %>
   <tr>
     <td>First Name : </td>
-    <td><%= uf.text_field :fname, :value => @userinfo.fname %></td>
+    <td><%= uf.text_field :fname, :value => @userinformation.fname %></td>
   </tr>
 
   <tr>
     <td>Last Name : </td>
-    <td><%=uf.text_field :lname, :value => @userinfo.lname %></td>
+    <td><%=uf.text_field :lname, :value => @userinformation.lname %></td>
   </tr>
 
   <tr>
@@ -28,19 +28,19 @@
 
   <tr>
     <td>Phone no. : </td>
-    <td><%=uf.text_field :phone, :value => @userinfo.phone %></td>
+    <td><%=uf.text_field :phone, :value => @userinformation.phone %></td>
   </tr>
   <tr>
     <td>Mobile : </td>
-    <td><%=uf.text_field :mobileno, :value => @userinfo.mobileno %></td>
+    <td><%=uf.text_field :mobileno, :value => @userinformation.mobileno %></td>
   </tr>
 
   <tr>
     <td>Gender : </td>
-    <td><%=uf.text_field :gender, :value => @userinfo.gender %></td>
+    <td><%=uf.text_field :gender, :value => @userinformation.gender %></td>
   </tr>
 
-  <%= uf.fields_for :address do |af| %>
+  <%= uf.fields_for :addresses do |af| %>
   <tr>
     <td>Address (Line 1) : </td>
     <td><%= af.text_field :line1, :value => @address.line1 %></td>
