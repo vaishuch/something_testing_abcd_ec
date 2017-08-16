@@ -3,66 +3,72 @@ class RegistrationController < Devise::RegistrationsController
 
 def new
 @user =User.new
-@userinfo = Userinformation.new
-@address = Address.new
+@userinfo = @user.build_userinformation
+@address = @userinfo.addresses.build
+@country = Country.new
+@state = State.new
 end
 
 
 def create
+@user =User.new(user_params)
+@userinformation = @user.userinformation.create(user_params)
+@user.save
 
+=begin
 @user = User.new
-@userinfo =Userinformation.new
-@address = Address.new
-
-
-
 @user.email = params[:user][:email]
 @user.password = params[:user][:password]
 
-@userinfo.name =params[:userinfo][:name]
-@userinfo.mobileno =params[:userinfo][:mobileno]
-
-@address.line1 =params[:address][:line1]
-@address.line2 =params[:address][:line2]
-
-#@address.city_id= 1
-#@address.state_id = 11
-#@address.zipcode_id = 454001
-@address.city_id= params[:address][:city_id]
-@address.state_id = params[:address][:state_id]
-@address.zipcode_id = params[:address][:zipcode_id]
-
-if @user.errors.blank?
-
-#@user.save
-
-puts @address.city_id 
-puts @address.state_id
-puts @address.zipcode_id 
+puts @user.email
 puts '*************************'
-@address.save
+@userinfo = Userinformation.new
+@user.save
+@userinformation.user = @user
 
-@userinfo.user = @user
-@userinfo.address = @address
+@userinfo.fname = params[:user][:userinformation][:fname]
+@userinfo.lname = params[:user][:userinformation][:lname]
+@userinfo.gender = params[:user][:userinformation][:gender]
+@userinfo.phone = params[:user][:userinformation][:phone]
+@userinfo.mobileno = params[:user][:userinformation][:mobileno]
 
-#@userinfo.save
+
+@address = Address.new
+@address.line1 = params[:user][:userinformation][:address][:line1]
+@address.line2 = params[:user][:userinformation][:address][:line2]
+@address.city = params[:user][:userinformation][:address][:city]
+@address.state_id = params[:user][:userinformation][:address][:state_id]
+@address.country_id = params[:user][:userinformation][:address][:country_id]
+@address.zipcode = params[:user][:userinformation][:address][:zipcode]
+byebug 
+=end
+
+
+@userinformation.save
+#@address.userinformation = @userinformation
+#@address.save
 
 redirect_to root_path
-else
-render :action => "new"
-end
 
 end
 
 private
     def user_params
-      params.require(:user).permit(:email, :password)
+    	#byebug
+      params.require(:user).permit(:email, :password,
+       :userinformation => [:fname, :lname, :gender, :phone, :mobileno ] )
+       
+       # :address[:line1, :line2, :city,:state_id, :country_id, :zipcode]] )
     end
 
     def userinfo_params
-      params.require(:userinfo).permit(:name, :mobileno, :line1,:line2,:zipno)
+    	
+      params.require(:userinformation).permit(:fname, :lname, :gender, :phone, :mobileno)	
     end
 
+	def address_params
+      params.require(:address).permit(:line1, :line2, :city,:zipcode)
+    end
 
 
 end

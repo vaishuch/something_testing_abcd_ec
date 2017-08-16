@@ -10,19 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170814112553) do
-
-  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "catagories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "catagory_name"
-=======
-ActiveRecord::Schema.define(version: 20170812140611) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "line1"
@@ -39,15 +27,18 @@ ActiveRecord::Schema.define(version: 20170812140611) do
     t.index ["userinformation_id"], name: "index_addresses_on_userinformation_id"
   end
 
-  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
-    t.string "code"
->>>>>>> 4605c062886d51905cfd5b70cdfcabce1b9899fa
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
+  create_table "catagories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "catagory_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "catagories_products", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "catagory_id"
     t.integer "product_id"
@@ -59,6 +50,13 @@ ActiveRecord::Schema.define(version: 20170812140611) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["catagory_id"], name: "index_catagory_types_on_catagory_id"
+  end
+
+  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -84,10 +82,6 @@ ActiveRecord::Schema.define(version: 20170812140611) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "catagory_types", "catagories"
-  add_foreign_key "products", "brands"
-  add_foreign_key "products", "catagory_types", column: "catagory_types_id"
-=======
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "rolename"
     t.datetime "created_at", null: false
@@ -132,7 +126,9 @@ ActiveRecord::Schema.define(version: 20170812140611) do
   add_foreign_key "addresses", "countries"
   add_foreign_key "addresses", "states"
   add_foreign_key "addresses", "userinformations"
+  add_foreign_key "catagory_types", "catagories"
+  add_foreign_key "products", "brands"
+  add_foreign_key "products", "catagory_types", column: "catagory_types_id"
   add_foreign_key "states", "countries"
   add_foreign_key "userinformations", "users"
->>>>>>> 4605c062886d51905cfd5b70cdfcabce1b9899fa
 end

@@ -1,49 +1,88 @@
 
 <h2>Sign up # REG</h2>
 
-<%= form_tag(user_registration_path,:method => 'post') %>
-<%= devise_error_messages! %>
+<%= form_for @user, url: user_registration_path, :method => 'post' do |f| %>
+<%#= devise_error_messages! %>
+<%#debugger%>
 <table>
+<%= f.fields_for :userinformation do |uf| %>
+  <tr>
+    <td>First Name : </td>
+    <td><%= uf.text_field :fname, :value => @userinfo.fname %></td>
+  </tr>
 
-<tr>
-<td>Username : </td>
-<td><%=text_field_tag "userinfo[name]",@userinfo.name %></td>
-</tr>
+  <tr>
+    <td>Last Name : </td>
+    <td><%=uf.text_field :lname, :value => @userinfo.lname %></td>
+  </tr>
 
-<tr>
-<td>Email : </td>
-<td><%=email_field_tag "user[email]",@user.email %></td>
-</tr>
+  <tr>
+    <td>Email : </td>
+    <td><%=f.email_field :email, :value => @user.email %></td>
+  </tr>
 
-<tr>
-<td>Password : </td>
-<td><%=password_field_tag "user[password]",@user.password %></td>
-</tr>
+  <tr>
+    <td>Password : </td>
+    <td><%=f.password_field :password, :value => @user.password %></td>
+  </tr>  
 
+  <tr>
+    <td>Phone no. : </td>
+    <td><%=uf.text_field :phone, :value => @userinfo.phone %></td>
+  </tr>
+  <tr>
+    <td>Mobile : </td>
+    <td><%=uf.text_field :mobileno, :value => @userinfo.mobileno %></td>
+  </tr>
 
-<tr>
-<td>Mobile : </td>
-<td><%=text_field_tag "userinfo[mobileno]" ,@userinfo.mobileno %></td>
-</tr>
+  <tr>
+    <td>Gender : </td>
+    <td><%=uf.text_field :gender, :value => @userinfo.gender %></td>
+  </tr>
 
-<tr>
-<td>Address : </td>
-<td><%=text_field_tag "address[line1]" ,@address.line1 %></td>
-<td><%=text_field_tag "address[line2]" ,@address.line2 %></td>
-<td>city: <%=text_field_tag "address[city_id]" , @address.city_id %></td>
-<td>state: <%=text_field_tag "address[state_id]" , @address.state_id %></td>
-<td> pincode: <%=text_field_tag "address[zipcode_id]" , @address.zipcode_id %></td>
+  <%= uf.fields_for :address do |af| %>
+  <tr>
+    <td>Address (Line 1) : </td>
+    <td><%= af.text_field :line1, :value => @address.line1 %></td>
+  </tr>
+  <tr>
+    <td>Line 2 : </td>
+    <td><%= af.text_field :line2, :value => @address.line2 %></td>
+  </tr>
+  <tr>
+    <td>City : </td>
+    <td><%=af.text_field :city , :value => @address.city%></td>
+  </tr>
+  <tr>
+    <td>state : </td>
+    <%#debugger%>
+  <%select_tag_str = af.select(:state_id, State.all.collect{|u| [u.name, u.id]})%>
+  <td><%= select_tag_str %></td>
+  </tr>
+     
+  <tr>
+  <td> pincode: </td>
+  <td><%=af.text_field :zipcode, :value => @address.zipcode %></td>      
+  </tr>
 
-<td><%#=text_field_tag "address[zipno]" ,@address.zipno %></td>
-</tr>
+  <tr>
+    <td>Country : </td>
+    <%#debugger%>
+  <%select_tag_str = af.select(:country_id, Country.all.collect{|u| [u.name, u.id]})%>
+  <td><%= select_tag_str %></td>
+  </tr>
 
-<tr>
-<td><%= submit_tag nil, :class => "form_submit"%></td>
-</tr>
-</table>
-<br />
-<%= render :partial => "devise/shared/links" %>
+<% end %>
+<% end %>
+    <tr>
+      <td><%= f.submit :class => "form_submit"%></td>
+    </tr>
+  </table>
 
-<p>
-<%= link_to "Home Page", root_path %> <p>
-</p>
+  <br />
+  <%= render :partial => "devise/shared/links" %>
+
+  <p>
+    <%= link_to "Home Page", root_path %> <p>
+  </p>
+  <% end %>

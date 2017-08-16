@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
 
 	has_one :userinformation
+	has_many :roles
 
 
 end

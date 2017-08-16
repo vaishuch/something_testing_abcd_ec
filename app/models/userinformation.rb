@@ -1,4 +1,4 @@
 class Userinformation < ApplicationRecord
   belongs_to :user
-  belongs_to :address
+  has_many :addresses
 end
