@@ -6,12 +6,17 @@ class RegistrationController < Devise::RegistrationsController
     @address = @userinformation.addresses.build
     @country = Country.new
     @state = State.new
+    
+
   end
 
   def create
     @user =User.new(user_params)
+    @roles = Role.new
+    @user.roles << @roles    # insert the id of user and role in join table of role_user
     @user.save
     redirect_to root_path
+
   end
 
   private
