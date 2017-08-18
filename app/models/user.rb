@@ -22,10 +22,8 @@ class User < ApplicationRecord
   self.roles.collect { |each| puts each.rolename }
   end	
 
-
-	def role? rolename
+ 	def role? rolename
   	  self.roles.collect { |each| each.rolename }.include? rolename.to_s 
   	   	  # role = self.roles.collect {|each| }
   end
-
 end
