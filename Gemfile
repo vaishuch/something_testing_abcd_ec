@@ -13,7 +13,9 @@ gem 'devise'
 
 gem 'mysql2', '~> 0.4.8'
 
+gem 'cancancan', '~> 2.0'
 
+gem 'rails_admin', '~> 1.2'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'

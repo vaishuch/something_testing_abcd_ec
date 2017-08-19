@@ -9,9 +9,7 @@ class Ability
 	   if user.role? 'admin'
 	   	can :manage, :all
 	   elsif user.role? 'normaluser'
-
-	   	can :read , User
-	   	can :edit , User
+	   	can :read , User	   	
 	   else
 	   	can :read , User  
 
