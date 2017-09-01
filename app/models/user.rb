@@ -6,9 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
 
-
   has_one :userinformation
   has_and_belongs_to_many :roles
+  has_one :cart
 
   accepts_nested_attributes_for :userinformation, :allow_destroy => true
 

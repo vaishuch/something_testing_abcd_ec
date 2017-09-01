@@ -1,9 +1,8 @@
-
-<h2>Sign up # REG</h2>
-
+<div id="title">Sign up # REG</div>
 <%= form_for @user, url: user_registration_path, :method => 'post' do |f| %>
 <%#= devise_error_messages! %>
 <%#debugger%>
+<div id="loginuser">
 <table>
 <%= f.fields_for :userinformation do |uf| %>
   <tr>
@@ -82,6 +81,7 @@
   <%= render :partial => "devise/shared/links" %>
 
   <p>
-    <%= link_to "Home Page", root_path %> <p>
+    <%= link_to "Home Page", root_path %> 
   </p>
   <% end %>
+  </div>

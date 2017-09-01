@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  #get 'carts/show'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'home/index'
 
@@ -9,5 +11,6 @@ root to: 'home#index'
 
 
 devise_for :users,:controllers => { :registrations =>'registration'}
-
+resources :products
+resources :carts, only: [:show, :new, :create] 
 end

@@ -17,6 +17,10 @@ gem 'cancancan', '~> 2.0'
 
 gem 'rails_admin', '~> 1.2'
 
+gem 'bootstrap-sass', '3.3.7'
+
+gem "paperclip", "~> 5.0.0"
+
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use Puma as the app server
