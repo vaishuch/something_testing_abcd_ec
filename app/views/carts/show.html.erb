@@ -1,19 +1,18 @@
 <div class="cart_table">
 	<table>
 		<tr><th>Product</th><th>Price</th><th>Quantity</th><th>Total</th></tr>
-		<tr>
-		
-		<% @cart.cartitem.collect do |item| %>
-			<td> <% Photo.where(product_id: item.product_id).collect {|img| 
-				 link_to image_tag(img.avatar.url(:thumb)) }%> </td>
+		<tr>		
+		<% @c.each do |item| %>
+			<td> <% Photo.where(product_id: item.product_id).collect do |img| %>
+				<%= image_tag img.avatar.url(:thumb) %><% end %> </td>
 				<td><%= item.price %></td>
-				<td>item.qty</td>
-				<td> <% total = item.price * item.qty  %> <%= total %> </td>			 
-				<% end %>
-			</tr>			
+				<td><%=item.qty %></td>
+				<td><% total = item.price * item.qty  %><%= total %></td>			 
+			</tr>	
+			<% end %>		
 		</table>
-		<div style="margin-left: 596px;  margin-top: 20px;">Amount : <%= total%></div>
+		<div style="margin-left: 596px;  margin-top: 20px;">Amount : </div>
 
-		<h1><%= link_to "Buy Another Product" , '#'%></h1>
+		<h1><%= link_to "Buy Another Product" , root_path %></h1>
 		<h1><%= link_to "Pay Now" , '#'%></h1>
 	</div>

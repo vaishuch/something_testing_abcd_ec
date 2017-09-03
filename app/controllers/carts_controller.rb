@@ -13,7 +13,7 @@ class CartsController < ApplicationController
 		@cartitms.qty = 1
 		@cart = Cart.find_by(user_id: current_user.id)
 		if @cart.present?
-			puts 'in if ************'
+			puts 'nothing ************'
 		else
 			@cart = Cart.new
 			@cart.user_id = current_user.id
@@ -25,11 +25,9 @@ class CartsController < ApplicationController
 	end
 
 	def show
-		puts '***********'
-		@cart = Cart.where(userid: current_user.id)
-		 @cart.cartitems.collect {|p| puts p.product_id	 }
-
-  	#@product = Product.where(id: @cart.product_id)  	
-  end
+		puts '*****in cart show******'
+		@cart = Cart.where(user_id: params[:id])
+		@c = Cartitem.includes(:cart).where(cart: @cart).collect
+	end
 
 end
