@@ -1,0 +1,37 @@
+<div id="title"> </div>
+<div id="loginuser">
+	<table>		
+		<tr>
+			<td> Name : </td>
+			<td><%= @userinformation.fname + "              "+ @userinformation.lname %></td>
+		</tr>
+		<tr>
+			<td>Address: Line 1 : </td>
+			<td><%= @address.line1 %></td>
+		</tr>
+		<tr>
+			<td>Address: Line 2 : </td>
+			<td><%= @address.line2 %></td>
+		</tr>
+		<tr>
+			<td>City : </td>
+			<td><%= @address.city %></td>
+		</tr>
+		<tr>
+			<td>Zipcode : </td>
+			<td><%= @address.zipcode %></td>
+		</tr>
+		<tr>
+			<td>State: </td><% @st = State.find( @address.state_id) %>
+			<td><%= @st.name  %></td>
+		</tr>
+		<tr>
+			<td>Country: </td><% @ct = Country.find( @address.country_id) %>
+			<td><%= @ct.name  %></td>
+		</tr>
+		<tr></tr><tr></tr>
+		<tr>
+			<td><h3><%= link_to "Change Address", new_address_path %></h3> </td>
+		</tr>
+	</table>	
+</div>

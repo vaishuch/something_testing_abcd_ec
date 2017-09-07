@@ -5,19 +5,16 @@
     <%= link_to image_tag(img.avatar.url(:medium)), product_path(p) %>
     <% end %>
   </div>
-
   <div class="product-title">
     <% @b = Brand.find(p.brand_id) %> 
     <%= @b.name %> <%= p.name %>
     <% @q = p.quantity %>
-    <% if(@q.available_qty) > 0 %>
+    <% if (@q.available_qty) > 0 %>
     <%= @q.selling_price %>   
     <% end %>
   </div>
 </div>
 <% end %>
-
-
 
 
 

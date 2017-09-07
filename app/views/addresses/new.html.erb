@@ -1,0 +1,45 @@
+
+<div id="title"><h6>Shipping Address</h6></div>
+<%= form_for @address, url: addresses_path, :method => 'post' do |af| %>
+<div id="loginuser">
+  <table>
+    <tr>
+      <td>Address (Line 1) : </td>
+      <td><%= af.text_field :line1, :value => @address.line1 %></td>
+    </tr>
+    <tr>
+      <td>Line 2 : </td>
+      <td><%= af.text_field :line2, :value => @address.line2 %></td>
+    </tr>
+    <tr>
+      <td>City : </td>
+      <td><%=af.text_field :city , :value => @address.city%></td>
+    </tr>
+    <tr>
+      <td>state : </td>
+      <%#debugger%>
+      <%select_tag_str = af.select(:state_id, State.all.collect{|u| [u.name, u.id]})%>
+      <td><%= select_tag_str %></td>
+    </tr>
+    
+    <tr>
+      <td> pincode: </td>
+      <td><%=af.text_field :zipcode, :value => @address.zipcode %></td>      
+    </tr>
+
+    <tr>
+      <td>Country : </td>
+      <%select_tag_str = af.select(:country_id, Country.all.collect{|u| [u.name, u.id]})%>
+      <td><%= select_tag_str %></td>
+    </tr>
+
+    <tr>
+      <td><%= af.submit :class => "form_submit"%></td>
+    </tr>
+  </table>
+  <br />
+  <p>
+    <%= link_to "Home Page", root_path %> 
+  </p>
+  <% end %>
+</div>

@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170905140213) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -82,15 +83,24 @@ ActiveRecord::Schema.define(version: 20170905140213) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "cart_id"
+    t.integer "product_id"
+    t.float "totalamt", limit: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "product_id"
     t.string "avatar_file_name"
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.bigint "product_id"
     t.index ["product_id"], name: "index_photos_on_product_id"
   end
 
@@ -101,7 +111,6 @@ ActiveRecord::Schema.define(version: 20170905140213) do
     t.bigint "catagory_types_id"
     t.datetime "available_at"
     t.datetime "deleted_at"
-    t.decimal "price", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "brand_id"
@@ -135,6 +144,17 @@ ActiveRecord::Schema.define(version: 20170905140213) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["property_id"], name: "index_propertyvalues_on_property_id"
+  end
+
+  create_table "quantities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "product_id"
+    t.float "purchase_price", limit: 24
+    t.float "selling_price", limit: 24
+    t.integer "purchase_qty"
+    t.integer "available_qty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_quantities_on_product_id"
   end
 
   create_table "quantities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

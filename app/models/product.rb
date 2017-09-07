@@ -6,5 +6,4 @@ class Product < ApplicationRecord
   has_many :photos
   has_one :quantity
   belongs_to :brand
-  
 end
