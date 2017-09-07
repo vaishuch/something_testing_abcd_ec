@@ -1,0 +1,11 @@
+<h1> edit#reg </h1>
+<%= form_for @userinformation, url: registration_path(@userinformation), method: :get, action: :add do |f| %>  
+
+<table>
+<tr>
+<td>Username : </td>
+<td><%=text_field_tag "userinformation[username]",@userinformation.fname %></td>
+</tr>
+
+<%= f.submit "Add" %>
+<% end %>

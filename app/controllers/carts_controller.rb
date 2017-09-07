@@ -26,8 +26,8 @@ class CartsController < ApplicationController
 
 	def show
 		puts '*****in cart show******'
-		@cart = Cart.where(user_id: params[:id])
-		@c = Cartitem.includes(:cart).where(cart: @cart).collect
+		@c = Cart.where(user_id: params[:id])
+		@cartitem = Cartitem.includes(:cart).where(cart: @c)
 	end
 
 end

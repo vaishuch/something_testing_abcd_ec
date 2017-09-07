@@ -7,15 +7,27 @@
 	margin-left: 110px;
 	margin-top: 50px;
 }
-table{
-   border: 1px solid black;
-   width: 70%;
+table{  
+   width: 50%;
 }
 th{
-	height: 50px;
-	border: 1px solid black;
+	height: 50px;	
 }
 td{
-	border: 1px solid black;
+	
 	text-align: center;	
+}
+
+#cartitem{
+	width: 60%;
+	height: 120px;
+	background-color: whitesmoke;
+	float: left;
+	color: black;
+	border: 1px solid black;
+}
+
+#cartimg{
+	width: 50px;
+	height: 100px;		
 }

@@ -1,0 +1,19 @@
+
+<div> <h4 style="color: black; text-align: center; ">OrderDetails </h4></div> 
+
+<div id = "order" >
+	<%= form_for @order, url: orders_path, method: :post do |f| %>
+	<table>
+		<tr>
+			<td>Price: (<%=  Order.items(@cartitem) %>) </td>
+			<td><%= Order.total(@cartitem) %>
+			</td>
+		</tr>
+		<tr>
+			<td>Delivery charges :</td>
+			<td>Free</td>
+		</tr>	
+	<tr><td><%= f.submit "Place Order", :class => "form_submit" %></td></tr>
+</table>
+<% end %>
+</div>

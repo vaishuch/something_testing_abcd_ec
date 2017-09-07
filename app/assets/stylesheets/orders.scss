@@ -1,0 +1,23 @@
+// Place all the styles related to the orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#main{
+width: 100%;
+height: 100%;
+float: left;	
+}
+
+#cart{
+	width: 300px;
+	height: 500px;
+	background-color: green;
+}
+
+#order{
+width: 600px;
+height: 200px;
+margin-left: 300px;
+color: black;
+background-color: whitesmoke;
+}
