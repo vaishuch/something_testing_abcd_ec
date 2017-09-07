@@ -13,7 +13,8 @@ gem 'devise'
 
 gem 'mysql2', '~> 0.4.8'
 
-gem 'cancancan', '~> 2.0'
+
+gem 'cancancan', '~> 1.15.0'
 
 gem 'rails_admin', '~> 1.2'
 

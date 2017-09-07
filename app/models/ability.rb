@@ -6,14 +6,31 @@ class Ability
 
 	   user ||= User.new # guest user (not logged in)
 
-	   if user.role? 'admin'
-	   	can :manage, :all
-	   elsif user.role? 'normaluser'
-	   	can :read , User	   	  	
-	   else
-	   	can :read , User  
+	   if user.role?'admin'
+	   puts 'in ability user------------------------ admin'
+		can :dashboard
+	   	can :access, :rails_admin
+	   	can :manage ,:all
+		#end
 
+	  else user.role?'operator'
+		puts 'in ability user------------------------ opppp'
+	   	can :dashboard
+	   	can :access, :rails_admin
+	   	#can :manage ,:all
+     	can :manage, [Product, Catagory, CatagoryType, Property]
+      end
+
+     if user.role?'normaluser'
+     	puts 'in ability user------------------------'
+	   	can :read , [User]
+		can :create , [User]
+		can :update , [User]
+	   	can :destroy , [User]
+	   	
 	   end
+
+
 	#
 	# The first argument to `can` is the action you are giving the user
 	# permission to do.

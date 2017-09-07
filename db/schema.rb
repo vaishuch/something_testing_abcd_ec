@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906084220) do
+
+ActiveRecord::Schema.define(version: 20170905140213) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "line1"
@@ -68,6 +69,13 @@ ActiveRecord::Schema.define(version: 20170906084220) do
     t.index ["catagory_id"], name: "index_catagory_types_on_catagory_id"
   end
 
+  create_table "catagory_types_products", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "product_id"
+    t.integer "catagory_type_id"
+    t.index ["catagory_type_id", "product_id"], name: "index_catagory_types_products_on_catagory_type_id_and_product_id"
+    t.index ["product_id", "catagory_type_id"], name: "index_catagory_types_products_on_product_id_and_catagory_type_id"
+  end
+
   create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "code"
@@ -110,12 +118,43 @@ ActiveRecord::Schema.define(version: 20170906084220) do
     t.index ["catagory_types_id"], name: "index_products_on_catagory_types_id"
   end
 
+  create_table "products_properties", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "product_id"
+    t.integer "property_id"
+    t.index ["product_id", "property_id"], name: "index_products_properties_on_product_id_and_property_id"
+    t.index ["property_id", "product_id"], name: "index_products_properties_on_property_id_and_product_id"
+  end
+
+  create_table "products_propertyvalues", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "product_id"
+    t.integer "propertyvalue_id"
+    t.index ["product_id", "propertyvalue_id"], name: "index_products_propertyvalues_on_product_id_and_propertyvalue_id"
+    t.index ["propertyvalue_id", "product_id"], name: "index_products_propertyvalues_on_propertyvalue_id_and_product_id"
+  end
+
   create_table "properties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "size"
-    t.string "color"
-    t.string "product_model"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "propertyvalues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "value"
+    t.bigint "property_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_propertyvalues_on_property_id"
+  end
+
+  create_table "quantities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "product_id"
+    t.float "purchase_price", limit: 24
+    t.float "selling_price", limit: 24
+    t.integer "purchase_qty"
+    t.integer "available_qty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_quantities_on_product_id"
   end
 
   create_table "quantities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -185,6 +224,7 @@ ActiveRecord::Schema.define(version: 20170906084220) do
   add_foreign_key "photos", "products"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "catagory_types", column: "catagory_types_id"
+  add_foreign_key "propertyvalues", "properties"
   add_foreign_key "quantities", "products"
   add_foreign_key "states", "countries"
   add_foreign_key "userinformations", "users"

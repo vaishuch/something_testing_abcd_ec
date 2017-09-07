@@ -28,5 +28,4 @@ class CartsController < ApplicationController
 		@c = Cart.where(user_id: params[:id])
 		@cartitem = Cartitem.includes(:cart).where(cart: @c)
 	end
-
 end
