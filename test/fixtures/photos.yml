@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  zipno: 1
-  city: 
+  name: MyString
 
 two:
-  zipno: 1
-  city: 
+  name: MyString

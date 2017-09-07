@@ -1,0 +1,53 @@
+    <div id="main" >
+        <div id="header">
+          <div id="title">Online Shopping</div>
+          <div id="user">
+            <% if user_signed_in? %> <%= current_user.email %>
+
+<% if can? :edit , User  %>
+<%= link_to "Edit", edit_user_registration_path, :method => :get %>
+<%end %>
+
+            <%= link_to "Home Page", root_path , :style => 'color: black;'%>
+            <%= link_to "Log Out", destroy_user_session_path, :method => :delete, :style => 'color: black;' %>        
+            
+
+            <% else %>
+            
+            <%= link_to "Log In", new_user_session_path, :method => :get, :style => 'color: black;' %>
+            <%= link_to "Sign up", new_user_registration_path, :method => :get, :style => 'color: black;' %>  
+            
+            <% end %>
+        </div>
+    </div>
+    
+     <div id="menu">
+            
+      <ul>
+      <% Catagory.all.collect do |c| %> 
+        <li class="dropdown">
+            <a href="#" class="dropbtn"> <%= (c.catagory_name).capitalize %> </a>
+            <div class="dropdown-content">
+            
+               <% CatagoryType.where(id: c).each do |catagorytype| %> 
+            
+                <%= link_to  (catagorytype.cat_type).capitalize , products_category_products_path(catagorytype) %> 
+               <% end %>
+
+                </div>
+        </li>
+       <% end %>
+        </ul>
+        
+        </div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </div>
+

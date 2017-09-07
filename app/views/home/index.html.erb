@@ -1,30 +1,23 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% @products.each do |p|%>
+<div class="product-tile">
+  <div class="product-img">
+    <% Photo.where(product_id: p).collect do|img| %>    
+    <%= link_to image_tag(img.avatar.url(:medium)), product_path(p) %>
+    <% end %>
+  </div>
 
-
-<% if user_signed_in? %>
-
-<h3>you have succesfully signed in .... <%= current_user.email %> </h3>
-
-<% if can? :edit , User %>
-<%= link_to "Edit", edit_user_registration_path, :method => :get %>
-<%end %>
-
-
-<%= link_to "Home Page", root_path %> 
-<%= link_to "Log Out", destroy_user_session_path, :method => :delete %>
-
-<% else %>
-
-<h1> welcom to rails community</h1>
-
-<%= link_to "Log In", new_user_session_path, :method => :get %> <p>
-
-
-
-<%= link_to "Sign up", new_user_registration_path, :method => :get %>
-
-
-
+  <div class="product-title">
+    <% @b = Brand.find(p.brand_id) %> 
+    <%= @b.name %> <%= p.name %>
+    <% @q = p.quantity %>
+    <% if(@q.available_qty) > 0 %>
+    <%= @q.selling_price %>   
+    <% end %>
+  </div>
+</div>
 <% end %>
+
+
+
+
 

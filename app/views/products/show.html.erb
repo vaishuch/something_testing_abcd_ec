@@ -1,0 +1,45 @@
+
+<div class = "filterpart">
+
+	 <div class = "part"> 
+	 	<% Product.where(id: @product.id).collect do |p| %>
+			
+	 	<% p.properties.collect do |pr| %>
+	 	<div class="floating-box">
+	 	<%=  (pr.name).upcase %> <br>
+	 	</div>
+
+	 	<% pr.propertyvalues.collect do |pv| %>
+	 	
+	 	<input type="checkbox" > <%=  (pv.value).upcase %>  <p>
+	 	
+	 	<% end %>
+	 	<% end %>
+	 	<% end %>
+		</div>
+	 </div>
+	 
+
+<div class="product-tile">
+	<div class="product-img">
+		<% Photo.where(product_id: @product.id).collect do|img| %>    
+		<%= link_to image_tag(img.avatar.url(:medium)) %>
+		<% end %></div>
+		<div class="product-title"><%= @product.name =%>    
+			<% @b = Brand.find(@product.brand_id) %> 
+			<%= @b.name %> <%= @product.name %>
+			<% @q = @product.quantity %>
+			<% if (@q.available_qty) > 0 %>
+			<%= @q.selling_price %>   
+			<% end %>
+		</div>  
+	</div>
+	<div class = "description">
+		<%= @product.description%> <br />
+		<h1><%= link_to "Add to Cart" , carts_path(@product), {:controller => :carts,
+		 :method => :post, :action => :create} %></h1> <br />
+		<h1><%= link_to "show to Cart" , cart_path(current_user.id) %></h1> <br />
+		<h1><%= link_to "Buy Now" , '#'%></h1>
+	</div>
+
+

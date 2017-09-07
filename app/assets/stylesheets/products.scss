@@ -1,0 +1,40 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.filterpart{
+width: 300px;
+height: 1000px;
+float: left;
+color: white;
+background-color:#a4c0f4; 
+}
+
+.floating-box {
+	
+    float: left;
+    width: 285px;
+    height: 40px;
+   
+    color: black; 
+    text-align: center;
+    font-size: 150%;
+}
+
+.part{
+margin-top: 0px;
+width: 300px;
+height: 300px;
+float: left;
+color: black;
+background-color:#a4c0f4; 
+}
+
+
+.description{
+width: 500px;
+height: 400px;
+float: left;
+color: black;
+}

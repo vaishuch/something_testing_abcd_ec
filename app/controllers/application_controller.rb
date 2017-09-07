@@ -3,11 +3,12 @@ class ApplicationController < ActionController::Base
 
 def after_sign_in_path_for (resource)
 
-	if current_user.role?('admin')
-		
-		rails_admin.dashboard_path
+
+	if current_user.role?('admin') || current_user.role?('operator')
+	  rails_admin.dashboard_path
 	else
-	     root_path	
+		puts 'in ApplicationController --------------------- else'
+	     root_path
 	end	
 end
 
